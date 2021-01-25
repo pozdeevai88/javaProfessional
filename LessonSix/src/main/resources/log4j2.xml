@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+    <Appenders>
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <File name="rootLogToFile" fileName="log/log.txt" append= "true">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+        <File name="dbLogToFile" fileName="log/db_log.txt" append= "true">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="dbLog" level="info" additivity="false">
+            <AppenderRef ref="dbLogToFile"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="rootLogToFile"/>
+            <AppenderRef ref="rootLogToConsole"/>
+        </Root>
+    </Loggers>
+</Configuration>
